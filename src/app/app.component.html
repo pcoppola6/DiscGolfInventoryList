@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">Disc Golf Inventory</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2">Filter by:</div>
+        <div class="col-md-4">
+          <input type="text" 
+          [(ngModel)]='listFilter' />
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">Filtered by: {{listFilter}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-10">Discs Shown: </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table" *ngIf='products.length'>
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary"
+                (click)="toggleImage()">
+                {{showImage ? 'Hide' : 'Show'}} Image</button>
+            </th>
+            <th>Disc</th>
+            <th>Brand</th>
+            <th>Speed</th>
+            <th>Glide</th>
+            <th>Turn</th>
+            <th>Fade</th>
+            <th>Weight</th>
+            <th>Flight</th>
+            <th>Condition</th>
+            <th>In The Bag</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let product of filteredProducts'>
+            <td>
+              <img *ngIf="showImage"
+              [src]="product.imageUrl"
+              [title]="product.productName"
+              [style.width.px]="imageWidth"
+              [style.margin.px]="imageMargin">
+            </td>
+            <th>{{product.productName}}</th>
+            <th>{{product.discBrand}}</th>
+            <th>{{product.speed}}</th>
+            <th>{{product.glide}}</th>
+            <th>{{product.turn}}</th>
+            <th>{{product.fade}}</th>
+            <th>{{product.weight}}</th>
+            <th>{{product.flight}}</th>
+            <th>{{product.condition}}</th>
+            <th>{{product.inTheBag}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
